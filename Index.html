@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para ti ❤️</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
+    body {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background-image: url("https://wallpapers.com/images/hd/stardew-valley-2d-game-farm-landscape-4sjwb2my7po60x8a.jpg");
+      background-size: cover;
+      background-position: center;
+      font-family: "Pixelify Sans", sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      position: relative;
+      z-index: 0;
+      margin-top: 40px;
+    }
+
+    .content {
+      position: absolute;
+      top: -140px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #73D32D;
+      padding: 15px 40px;
+      text-align: center;
+      font-size: 22px;
+      color: #2D362B;
+      border: solid #44AF09 2px;
+      box-shadow: rgb(0, 0, 0) 20px 7px 22px -5px;
+      border-radius: 20px;
+      min-width: 320px;
+    }
+
+    button {
+      padding: 12px 30px;
+      font-size: 20px;
+      border: none;
+      cursor: pointer;
+      border-radius: 50px;
+      font-family: "Pixelify Sans", sans-serif;
+    }
+
+    #yes-btn {
+      background-color: #51CBF0;
+      border: solid #3A7D8C 2px;
+      box-shadow: rgb(0, 0, 0) 15px 7px 22px -5px;
+      color: #387488;
+      transition: 0.3s;
+    }
+
+    #yes-btn:hover {
+      background-color: #6DDE8D;
+      color: white;
+      transform: scale(1.08);
+    }
+
+    #no-btn {
+      background-color: #FEA59D;
+      border: solid #9F3649 2px;
+      box-shadow: rgb(0, 0, 0) 15px 7px 22px -5px;
+      color: #942116;
+    }
+
+    .result {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: 10;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .result.show {
+      display: flex;
+    }
+
+    .result h1 {
+      color: white;
+      font-size: 40px;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 8px black;
+    }
+
+    .result img {
+      max-width: 85%;
+      max-height: 65vh;
+      border-radius: 20px;
+      border: 4px solid white;
+      box-shadow: 0 0 25px rgba(255,255,255,0.4);
+    }
+
+    .close-btn {
+      margin-top: 20px;
+      background-color: #fff;
+      color: #333;
+      border: 2px solid #ccc;
+      box-shadow: rgb(0, 0, 0) 10px 5px 18px -5px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="content">
+      Quieres casarte conmigo? 💍❤️
+    </div>
+
+    <div class="button-container">
+      <button id="yes-btn">Si, obvio 😍</button>
+      <button id="no-btn">No 😔</button>
+    </div>
+  </div>
+
+  <div class="result" id="result">
+    <h1>Sabia que dirias que si 💖</h1>
+    <img src="foto.png" alt="Nuestra foto" id="proposal-photo">
+    <button class="close-btn" onclick="cerrarResultado()">Cerrar</button>
+  </div>
+
+  <script>
+    const noButton = document.getElementById('no-btn');
+    const yesButton = document.getElementById('yes-btn');
+    const result = document.getElementById('result');
+
+    noButton.addEventListener('mouseover', () => {
+      const maxX = window.innerWidth - noButton.offsetWidth;
+      const maxY = window.innerHeight - noButton.offsetHeight;
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      noButton.style.position = 'fixed';
+      noButton.style.left = randomX + 'px';
+      noButton.style.top = randomY + 'px';
+    });
+
+    yesButton.addEventListener('click', () => {
+      result.classList.add('show');
+    });
+
+    function cerrarResultado() {
+      result.classList.remove('show');
+    }
+  </script>
+
+</body>
+</html>
